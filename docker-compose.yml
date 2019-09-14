@@ -34,11 +34,12 @@ services:
       dockerfile: Dockerfile
     image: daskdev/dask-notebook
     hostname: notebook
+    volumes:
+      - /home/aslan/dask-docker:/home/jovyan/volume
+    ports:
+      - "8888:8888"
     environment:
       EXTRA_CONDA_PACKAGES: ${EXTRA_CONDA_PACKAGES}
       EXTRA_PIP_PACKAGES: ${EXTRA_PIP_PACKAGES}
       EXTRA_APT_PACKAGES: ${EXTRA_APT_PACKAGES}
-    ports:
-      - "8888:8888"
-    environment:
-      - DASK_SCHEDULER_ADDRESS="tcp://scheduler:8786"
+      DASK_SCHEDULER_ADDRESS: ${DASK_SCHEDULER_ADDRESS}
