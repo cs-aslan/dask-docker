@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     image: daskdev/dask
     hostname: dask-scheduler
+    volumes:
+      - /home/aslan/dask-docker:/home/jovyan/volume
     environment:
       EXTRA_CONDA_PACKAGES: ${EXTRA_CONDA_PACKAGES}
       EXTRA_PIP_PACKAGES: ${EXTRA_PIP_PACKAGES}
@@ -22,6 +24,8 @@ services:
       dockerfile: Dockerfile
     image: daskdev/dask
     hostname: dask-worker
+    volumes:
+      - /home/aslan/dask-docker:/home/jovyan/volume
     environment:
       EXTRA_CONDA_PACKAGES: ${EXTRA_CONDA_PACKAGES}
       EXTRA_PIP_PACKAGES: ${EXTRA_PIP_PACKAGES}
